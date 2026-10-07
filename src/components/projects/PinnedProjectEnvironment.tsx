@@ -124,7 +124,7 @@ export const PinnedProjectEnvironment: React.FC<PinnedProjectEnvironmentProps> =
               paddingBottom: '16px'
             }}
           >
-            <div className="font-mono" style={{ fontSize: 'var(--text-xs)', color: 'var(--accent-amber)' }}>
+            <div className="font-mono" style={{ fontSize: 'var(--text-xs)', color: 'var(--accent-cyan)' }}>
               PROJECT SEQUENCE &bull; {displayIndex} / {displayTotal}
             </div>
 

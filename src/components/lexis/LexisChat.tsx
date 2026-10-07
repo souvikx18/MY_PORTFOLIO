@@ -224,7 +224,7 @@ export const LexisChat: React.FC<LexisChatProps> = ({ onClose }) => {
                 >
                   <span
                     className="font-mono"
-                    style={{ fontSize: '10px', color: 'var(--accent-bronze)', fontWeight: 600 }}
+                    style={{ fontSize: '10px', color: 'var(--accent-cyan)', fontWeight: 600 }}
                   >
                     SOURCES:
                   </span>

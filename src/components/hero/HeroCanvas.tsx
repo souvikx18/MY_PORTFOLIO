@@ -95,7 +95,7 @@ export const HeroCanvas: React.FC = () => {
         const strokeColor = 'rgba(54, 207, 201, 0.16)';
         const nodeColor = 'rgba(184, 193, 204, 0.35)';
         const accentNodeColor = '#5B8CFF';
-        const amberNodeColor = '#D6A85F';
+        const amberNodeColor = '#36CFC9';
 
         const originX = width * 0.72 + mouseX;
         const originY = height * 0.48 + mouseY;

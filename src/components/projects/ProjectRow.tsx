@@ -39,7 +39,7 @@ export const ProjectRow: React.FC<ProjectRowProps> = ({ project, index }) => {
             className="font-mono"
             style={{
               fontSize: 'var(--text-sm)',
-              color: 'var(--accent-bronze)',
+              color: 'var(--accent-cyan)',
               fontWeight: 500
             }}
             aria-hidden="true"
@@ -137,7 +137,7 @@ export const ProjectRow: React.FC<ProjectRowProps> = ({ project, index }) => {
             className="font-mono"
             style={{
               fontSize: 'var(--text-xs)',
-              color: 'var(--accent-bronze)',
+              color: 'var(--accent-cyan)',
               marginBottom: '6px'
             }}
           >
@@ -153,7 +153,7 @@ export const ProjectRow: React.FC<ProjectRowProps> = ({ project, index }) => {
             className="font-mono"
             style={{
               fontSize: 'var(--text-xs)',
-              color: 'var(--accent-bronze)',
+              color: 'var(--accent-cyan)',
               marginBottom: '6px'
             }}
           >
@@ -181,7 +181,7 @@ export const ProjectRow: React.FC<ProjectRowProps> = ({ project, index }) => {
             className="font-mono"
             style={{
               fontSize: 'var(--text-xs)',
-              color: 'var(--accent-bronze)',
+              color: 'var(--accent-cyan)',
               marginBottom: '12px'
             }}
           >

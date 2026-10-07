@@ -32,7 +32,7 @@ export const About: React.FC = () => {
                 marginBottom: '24px'
               }}
             >
-              Background &amp; Systems Focus
+              About Me &amp; Background
             </h2>
 
             <p
@@ -59,12 +59,12 @@ export const About: React.FC = () => {
                 className="font-mono"
                 style={{
                   fontSize: 'var(--text-xs)',
-                  color: 'var(--accent-amber)',
+                  color: 'var(--accent-cyan)',
                   margin: 0,
                   letterSpacing: 'var(--tracking-wide)'
                 }}
               >
-                ACADEMIC RECORD &bull; BRAINWARE UNIVERSITY
+                EDUCATION &bull; BRAINWARE UNIVERSITY
               </p>
 
               <h3 style={{ fontSize: 'var(--text-xl)', margin: 0, fontWeight: 650 }}>
@@ -113,7 +113,7 @@ export const About: React.FC = () => {
                 marginBottom: '24px'
               }}
             >
-              Internship &amp; Defensive Design
+              Internship &amp; Practical Experience
             </h2>
 
             <div

@@ -128,7 +128,7 @@ export const SkillInventory: React.FC = () => {
                   borderRadius: 'var(--radius-sm)'
                 }}
               >
-                <span className="font-mono" style={{ fontSize: '10px', color: 'var(--accent-amber)', display: 'block', marginBottom: '4px' }}>
+                <span className="font-mono" style={{ fontSize: '10px', color: 'var(--accent-cyan)', display: 'block', marginBottom: '4px' }}>
                   CROSS-REFERENCED PROJECT APPLICATION
                 </span>
                 <p className="font-mono" style={{ fontSize: '11px', color: 'var(--text-primary)', margin: 0 }}>

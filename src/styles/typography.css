@@ -19,19 +19,19 @@
   --text-2xl: clamp(1.35rem, 2vw, 1.75rem);
   --text-3xl: clamp(1.65rem, 3vw, 2.5rem);
   --text-4xl: clamp(2.1rem, 4.5vw, 3.75rem);
-  --text-5xl: clamp(2.75rem, 6vw, 5.25rem);
-  --text-hero: clamp(3.25rem, 8vw, 7.5rem);
+  --text-5xl: clamp(2.25rem, 4vw, 3.25rem);
+  --text-hero: clamp(2.25rem, 4.2vw, 3.75rem);
 
   /* Line Heights */
-  --leading-none: 0.92;
-  --leading-tight: 1.15;
+  --leading-none: 1.12;
+  --leading-tight: 1.2;
   --leading-snug: 1.35;
   --leading-normal: 1.6;
   --leading-relaxed: 1.75;
 
   /* Letter Spacing */
-  --tracking-tighter: -0.065em;
-  --tracking-tight: -0.035em;
+  --tracking-tighter: -0.03em;
+  --tracking-tight: -0.02em;
   --tracking-normal: 0em;
   --tracking-wide: 0.05em;
   --tracking-wider: 0.08em;

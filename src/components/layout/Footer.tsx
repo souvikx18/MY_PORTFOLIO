@@ -101,7 +101,7 @@ export const Footer: React.FC = () => {
                   <span
                     aria-hidden="true"
                     className="font-mono"
-                    style={{ color: 'var(--accent-amber)', fontSize: 'var(--text-xs)' }}
+                    style={{ color: 'var(--accent-cyan)', fontSize: 'var(--text-xs)' }}
                   >
                     {item.index}
                   </span>

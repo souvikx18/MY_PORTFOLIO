@@ -10,6 +10,17 @@ interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({ theme, onToggleTheme }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  // Monitor scroll position to apply sleek transparent backdrop when scrolling
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 15);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // Close mobile menu on Escape key
   useEffect(() => {
@@ -49,9 +60,12 @@ export const Header: React.FC<HeaderProps> = ({ theme, onToggleTheme }) => {
         top: 0,
         zIndex: 100,
         height: 'var(--header-height)',
-        backgroundColor: 'var(--bg-primary)',
-        borderBottom: '1px solid var(--border-subtle)',
-        transition: 'background-color var(--duration-base) var(--ease-standard), border-color var(--duration-base) var(--ease-standard)'
+        backgroundColor: isScrolled ? 'rgba(7, 10, 15, 0.45)' : 'var(--bg-primary)',
+        backdropFilter: isScrolled ? 'blur(16px)' : 'none',
+        WebkitBackdropFilter: isScrolled ? 'blur(16px)' : 'none',
+        borderBottom: isScrolled ? '1px solid rgba(54, 207, 201, 0.12)' : '1px solid var(--border-subtle)',
+        boxShadow: isScrolled ? '0 10px 30px -10px rgba(0, 0, 0, 0.5)' : 'none',
+        transition: 'all 300ms cubic-bezier(0.2, 0.8, 0.2, 1)'
       }}
     >
       <Container
@@ -224,7 +238,7 @@ export const Header: React.FC<HeaderProps> = ({ theme, onToggleTheme }) => {
                 }}
               >
                 <span>{link.label}</span>
-                <span className="font-mono" style={{ fontSize: 'var(--text-xs)', color: 'var(--accent-bronze)' }}>
+                <span className="font-mono" style={{ fontSize: 'var(--text-xs)', color: 'var(--accent-cyan)' }}>
                   0{idx + 1}
                 </span>
               </a>

@@ -175,7 +175,7 @@ export const Hero3DObject: React.FC = () => {
         const edgeColor = 'rgba(54, 207, 201, 0.38)';
         const vertexColor = '#B8C1CC';
         const activeNode = '#5B8CFF';
-        const amberNode = '#D6A85F';
+        const amberNode = '#36CFC9';
 
         const cx = width / 2;
         const cy = height / 2;

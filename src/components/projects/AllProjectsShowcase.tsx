@@ -20,6 +20,19 @@ type FilterOption = 'ALL' | ProjectStatus;
 export const AllProjectsShowcase: React.FC<AllProjectsShowcaseProps> = ({ projects }) => {
   const [filter, setFilter] = useState<FilterOption>('ALL');
   const [viewMode, setViewMode] = useState<'showcase' | 'compact'>('showcase');
+  const [expandedEvidenceIds, setExpandedEvidenceIds] = useState<Set<string>>(new Set());
+
+  const toggleEvidence = (id: string) => {
+    setExpandedEvidenceIds(prev => {
+      const next = new Set(prev);
+      if (next.has(id)) {
+        next.delete(id);
+      } else {
+        next.add(id);
+      }
+      return next;
+    });
+  };
 
   const filteredProjects = filter === 'ALL'
     ? projects
@@ -255,7 +268,7 @@ export const AllProjectsShowcase: React.FC<AllProjectsShowcaseProps> = ({ projec
                       style={{
                         fontSize: '14px',
                         fontWeight: 600,
-                        color: 'var(--accent-amber)'
+                        color: 'var(--accent-cyan)'
                       }}
                     >
                       {formattedIndex} / {String(projects.length).padStart(2, '0')}
@@ -493,9 +506,77 @@ export const AllProjectsShowcase: React.FC<AllProjectsShowcaseProps> = ({ projec
                     </div>
                   </div>
 
-                  {/* Right Column: Live Interactive Evidence Artifact Simulator */}
+                  {/* Right Column: Live Interactive Evidence Artifact Simulator (Loaded on Demand) */}
                   <div style={{ width: '100%' }}>
-                    {renderEvidenceArtifact(project.id)}
+                    {expandedEvidenceIds.has(project.id) ? (
+                      <div className="evidence-panel-expanded" style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                        <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                          <button
+                            type="button"
+                            onClick={() => toggleEvidence(project.id)}
+                            className="font-mono"
+                            style={{
+                              fontSize: '11px',
+                              color: 'var(--text-muted)',
+                              backgroundColor: 'transparent',
+                              border: '1px solid var(--border-subtle)',
+                              padding: '4px 8px',
+                              borderRadius: 'var(--radius-sm)',
+                              cursor: 'pointer'
+                            }}
+                          >
+                            Hide Architecture &and;
+                          </button>
+                        </div>
+                        {renderEvidenceArtifact(project.id)}
+                      </div>
+                    ) : (
+                      <div
+                        className="editorial-card"
+                        style={{
+                          padding: '32px 24px',
+                          display: 'flex',
+                          flexDirection: 'column',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          textAlign: 'center',
+                          gap: '14px',
+                          background: 'linear-gradient(145deg, var(--surface-raised) 0%, var(--surface) 100%)',
+                          border: '1px dashed var(--border-active)',
+                          minHeight: '260px'
+                        }}
+                      >
+                        <div
+                          className="font-mono"
+                          style={{
+                            fontSize: '11px',
+                            color: 'var(--accent-cyan)',
+                            letterSpacing: '0.06em'
+                          }}
+                        >
+                          SYSTEM ARCHITECTURE &bull; {project.name.toUpperCase()}
+                        </div>
+                        <p style={{ fontSize: 'var(--text-sm)', color: 'var(--text-secondary)', maxWidth: '360px', margin: 0, lineHeight: 1.5 }}>
+                          Live simulation, architecture schemas, and execution telemetry load on request.
+                        </p>
+                        <button
+                          type="button"
+                          onClick={() => toggleEvidence(project.id)}
+                          className="btn-secondary font-mono"
+                          style={{
+                            fontSize: '12px',
+                            padding: '10px 18px',
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '8px',
+                            borderColor: 'var(--accent-cyan)',
+                            color: 'var(--text-primary)'
+                          }}
+                        >
+                          <span style={{ color: 'var(--accent-cyan)' }}>&#9654;</span> Inspect System Architecture &amp; Evidence
+                        </button>
+                      </div>
+                    )}
                   </div>
                 </div>
               </article>
@@ -553,7 +634,7 @@ export const AllProjectsShowcase: React.FC<AllProjectsShowcaseProps> = ({ projec
                       transition: 'background-color var(--duration-fast) var(--ease-standard)'
                     }}
                   >
-                    <td style={{ padding: '16px 18px', fontFamily: 'var(--font-mono)', fontSize: '12px', color: 'var(--accent-amber)' }}>
+                    <td style={{ padding: '16px 18px', fontFamily: 'var(--font-mono)', fontSize: '12px', color: 'var(--accent-cyan)' }}>
                       {num}
                     </td>
                     <td style={{ padding: '16px 18px' }}>

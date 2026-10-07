@@ -9,14 +9,13 @@ export const profileData: PersonalProfile = {
   name: 'Souvik Konar',
   shortName: 'Souvik',
   initials: 'S.K.',
-  eyebrow: 'COMPUTER SCIENCE & ENGINEERING',
+  eyebrow: 'Computer Science & Engineering',
   headline: [
-    'I BUILD SOFTWARE',
-    'THAT SOLVES REAL',
-    'PROBLEMS.'
+    'I build software that',
+    'solves real problems.'
   ],
   positioningStatement: 
-    'Full-stack developer focused on building reliable web applications, backend systems and AI-powered workflows.',
+    'Full-stack developer focused on building reliable web applications, clean backend architectures, and practical AI tools.',
   bio: 
     '3rd-year B.Tech Computer Science student at Brainware University with a strong interest in software development and systems engineering. Hands-on experience in cybersecurity through a NASSCOM internship, with practical focus on Data Structures & Algorithms, full-stack web architectures, and threat-aware software design.',
   locationCity: 'Kolkata',

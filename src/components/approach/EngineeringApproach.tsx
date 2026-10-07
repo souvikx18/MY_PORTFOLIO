@@ -147,7 +147,7 @@ export const EngineeringApproach: React.FC = () => {
                 gap: '12px'
               }}
             >
-              <span className="font-mono" style={{ fontSize: '11px', color: 'var(--accent-amber)' }}>
+              <span className="font-mono" style={{ fontSize: '11px', color: 'var(--accent-cyan)' }}>
                 APPLIED IN REAL SYSTEMS &bull; {currentApp.context.toUpperCase()}
               </span>
               <p style={{ fontSize: 'var(--text-sm)', color: 'var(--text-primary)', lineHeight: 'var(--leading-normal)', margin: 0 }}>

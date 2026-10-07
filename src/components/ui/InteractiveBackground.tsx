@@ -123,7 +123,7 @@ export const InteractiveBackground: React.FC = () => {
         // Midnight Tech Palette: graphite geometry, electric blue active nodes, cyan system connections
         const nodeColor = 'rgba(127, 138, 152, 0.22)';
         const activeNodeColor = '#5B8CFF';
-        const amberHighlightColor = '#D6A85F';
+        const amberHighlightColor = '#36CFC9';
         const lineBaseColor = '54, 207, 201';
 
         for (let i = 0; i < nodes.length; i++) {

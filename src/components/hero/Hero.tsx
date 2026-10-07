@@ -4,7 +4,7 @@ import { Section } from '../ui/Section';
 import { SectionLabel } from '../ui/SectionLabel';
 import { Button } from '../ui/Button';
 import { HeroCanvas } from './HeroCanvas';
-import { Hero3DObject } from './Hero3DObject';
+import { HeroDeveloperCard } from './HeroDeveloperCard';
 import { profileData } from '../../data';
 
 export const Hero: React.FC = () => {
@@ -14,7 +14,7 @@ export const Hero: React.FC = () => {
       className="section-ambient--hero"
       style={{
         position: 'relative',
-        paddingBlock: 'clamp(72px, 12vh, 140px)',
+        paddingBlock: 'clamp(64px, 10vh, 120px)',
         overflow: 'hidden'
       }}
     >
@@ -30,7 +30,7 @@ export const Hero: React.FC = () => {
             alignItems: 'center',
             flexWrap: 'wrap',
             gap: '12px',
-            marginBottom: '24px'
+            marginBottom: '28px'
           }}
         >
           <SectionLabel label={profileData.eyebrow} />
@@ -38,7 +38,7 @@ export const Hero: React.FC = () => {
           <div
             className="font-mono"
             style={{
-              fontSize: '11px',
+              fontSize: '12px',
               color: 'var(--text-muted)',
               display: 'flex',
               alignItems: 'center',
@@ -51,34 +51,35 @@ export const Hero: React.FC = () => {
                 height: '6px',
                 borderRadius: '50%',
                 backgroundColor: 'var(--accent-cyan)',
-                boxShadow: '0 0 8px rgba(54, 207, 201, 0.4)',
+                boxShadow: '0 0 8px rgba(54, 207, 201, 0.5)',
                 display: 'inline-block'
               }}
               aria-hidden="true"
             />
-            <span>SYSTEM DISCIPLINE &bull; CONSTRAINT-FIRST ARCHITECTURE</span>
+            <span>Full-Stack &amp; Systems Developer &bull; Kolkata, India</span>
           </div>
         </div>
 
-        {/* Hero Split Layout: Editorial Typography on Left, 3D Computational Object on Right */}
+        {/* Hero Split Layout: Editorial Typography on Left, Developer Profile Card on Right */}
         <div
           className="hero-split-grid"
           style={{
             display: 'grid',
-            gridTemplateColumns: 'minmax(0, 1.4fr) minmax(280px, 1fr)',
+            gridTemplateColumns: 'minmax(0, 1.3fr) minmax(300px, 1fr)',
             gap: 'clamp(28px, 4vw, 56px)',
             alignItems: 'center'
           }}
         >
-          {/* Left Column: Massive Editorial Headline & Positioning Statement */}
+          {/* Left Column: Refined Editorial Headline & Positioning Statement */}
           <div>
             <h1
               style={{
                 fontSize: 'var(--text-hero)',
-                lineHeight: 'var(--leading-none)',
-                letterSpacing: 'var(--tracking-tighter)',
-                marginBlock: '0 24px',
-                maxWidth: '920px'
+                lineHeight: 'var(--leading-tight)',
+                letterSpacing: 'var(--tracking-tight)',
+                marginBlock: '0 20px',
+                maxWidth: '720px',
+                fontWeight: 650
               }}
             >
               {profileData.headline.map((line, idx) => (
@@ -91,18 +92,18 @@ export const Hero: React.FC = () => {
             {/* Positioning Statement */}
             <p
               style={{
-                fontSize: 'var(--text-xl)',
+                fontSize: 'var(--text-lg)',
                 color: 'var(--text-secondary)',
-                maxWidth: '680px',
-                marginBottom: '36px',
-                lineHeight: 'var(--leading-snug)'
+                maxWidth: '620px',
+                marginBottom: '32px',
+                lineHeight: 'var(--leading-normal)'
               }}
             >
               {profileData.positioningStatement}
             </p>
 
             {/* Primary & Secondary Actions */}
-            <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap', alignItems: 'center', marginBottom: '32px' }}>
+            <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap', alignItems: 'center', marginBottom: '16px' }}>
               <Button href="#work" variant="primary">
                 View All 6 Projects &rarr;
               </Button>
@@ -112,83 +113,39 @@ export const Hero: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Column: Interactive 3D Computational Polyhedron */}
-          <div
-            className="hero-3d-wrapper editorial-card"
-            style={{
-              padding: '24px',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
-              position: 'relative',
-              background: 'radial-gradient(circle at center, var(--surface-raised) 0%, var(--surface) 100%)',
-              border: '1px solid var(--border-subtle)',
-              borderRadius: 'var(--radius-sm)'
-            }}
-          >
-            <div
-              className="font-mono"
-              style={{
-                fontSize: '10px',
-                color: 'var(--accent-cyan)',
-                letterSpacing: '0.08em',
-                marginBottom: '8px',
-                alignSelf: 'flex-start'
-              }}
-            >
-              SYS.3D // PERSPECTIVE MATRIX PROJECTION
-            </div>
-
-            <Hero3DObject />
-
-            <div
-              className="font-mono"
-              style={{
-                fontSize: '10px',
-                color: 'var(--text-muted)',
-                marginTop: '8px',
-                display: 'flex',
-                justifyContent: 'space-between',
-                width: '100%',
-                borderTop: '1px solid var(--border-subtle)',
-                paddingTop: '8px'
-              }}
-            >
-              <span>VERTICES: 12</span>
-              <span>EDGES: 30</span>
-              <span>INERTIA: ACTIVE</span>
-            </div>
+          {/* Right Column: Authentic Developer Profile Console */}
+          <div className="hero-developer-wrapper">
+            <HeroDeveloperCard />
           </div>
         </div>
 
-        {/* Editorial Metadata Footer */}
+        {/* Natural Human Metadata Footer */}
         <div
           className="font-mono hero-metadata"
           style={{
             fontSize: 'var(--text-xs)',
-            color: 'var(--text-muted)',
+            color: 'var(--text-secondary)',
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
             flexWrap: 'wrap',
-            gap: '12px',
+            gap: '16px',
             marginTop: '44px',
             paddingTop: '20px',
             borderTop: '1px solid var(--border-subtle)'
           }}
         >
-          <div>
-            <span style={{ color: 'var(--accent-amber)' }}>LOCATION:</span>{' '}
-            {profileData.locationCity.toUpperCase()}, {profileData.locationCountry.toUpperCase()}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <span style={{ color: 'var(--accent-cyan)', fontWeight: 600 }}>Location:</span>{' '}
+            <span>{profileData.locationCity}, {profileData.locationCountry}</span>
           </div>
-          <div>
-            <span style={{ color: 'var(--accent-amber)' }}>EDUCATION:</span>{' '}
-            3RD-YEAR B.TECH CSE &bull; BRAINWARE UNIVERSITY (CGPA 8.64)
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <span style={{ color: 'var(--accent-cyan)', fontWeight: 600 }}>Education:</span>{' '}
+            <span>B.Tech CSE (3rd Year) &bull; Brainware University (CGPA 8.64)</span>
           </div>
-          <div>
-            <span style={{ color: 'var(--accent-amber)' }}>AVAILABILITY:</span>{' '}
-            OPEN FOR SOFTWARE ENGINEERING OPPORTUNITIES
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <span style={{ color: 'var(--accent-cyan)', fontWeight: 600 }}>Status:</span>{' '}
+            <span>Open to software engineering roles &amp; internships</span>
           </div>
         </div>
       </Container>
@@ -198,8 +155,8 @@ export const Hero: React.FC = () => {
           .hero-split-grid {
             grid-template-columns: 1fr !important;
           }
-          .hero-3d-wrapper {
-            max-width: 380px;
+          .hero-developer-wrapper {
+            max-width: 440px;
             margin: 0 auto;
             width: 100%;
           }

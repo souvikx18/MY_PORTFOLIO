@@ -7,3 +7,4 @@ export * from './StatusBadge';
 export * from './SkipLink';
 export * from './CustomCursor';
 export * from './InteractiveBackground';
+export * from './TapRipple';

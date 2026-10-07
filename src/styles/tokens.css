@@ -36,13 +36,13 @@
   --accent-cyan: #36CFC9;
   --accent-cyan-subtle: rgba(54, 207, 201, 0.12);
 
-  /* SECONDARY HIGHLIGHT (Metadata, Numbers, Special Markers) */
-  --accent-amber: #D6A85F;
-  --accent-amber-subtle: rgba(214, 168, 95, 0.12);
+  /* UNIFIED CYAN SYSTEM (Replacing former golden/amber accent with clean Cyan) */
+  --accent-amber: #36CFC9;
+  --accent-amber-subtle: rgba(54, 207, 201, 0.12);
 
   /* Architectural Backward Compatibility Aliases */
-  --accent-bronze: #D6A85F;
-  --accent-bronze-light: rgba(214, 168, 95, 0.12);
+  --accent-bronze: #36CFC9;
+  --accent-bronze-light: rgba(54, 207, 201, 0.12);
   --accent-sage: #36CFC9;
   --accent-earth: #5D6876;
 
@@ -55,14 +55,14 @@
   --env-depth-shadow: 0 20px 48px -12px rgba(2, 4, 7, 0.75);
   --env-card-border: #202A36;
 
-  /* Verified Project Status Tokens */
+  /* Verified Project Status Tokens (Cyan / Neutral) */
   --status-hosted-border: #1B3835;
   --status-hosted-bg: rgba(54, 207, 201, 0.08);
   --status-hosted-text: #36CFC9;
 
-  --status-dev-border: #3A3522;
-  --status-dev-bg: rgba(214, 168, 95, 0.08);
-  --status-dev-text: #D6A85F;
+  --status-dev-border: #1B3835;
+  --status-dev-bg: rgba(54, 207, 201, 0.08);
+  --status-dev-text: #36CFC9;
 
   --status-pending-border: #202A36;
   --status-pending-bg: rgba(127, 138, 152, 0.08);
