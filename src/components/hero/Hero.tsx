@@ -145,7 +145,7 @@ export const Hero: React.FC = () => {
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <span style={{ color: 'var(--accent-cyan)', fontWeight: 600 }}>Status:</span>{' '}
-            <span>Open to software engineering roles &amp; internships</span>
+            <span>Learn &amp; Explore new things</span>
           </div>
         </div>
       </Container>

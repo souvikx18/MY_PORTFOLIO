@@ -172,12 +172,12 @@ export const HeroDeveloperCard: React.FC = () => {
               }}
             />
             <span className="font-mono" style={{ fontSize: '12px', color: 'var(--text-primary)', fontWeight: 600 }}>
-              Available for Opportunities
+              Learn &amp; Explore new things
             </span>
           </div>
 
           <p style={{ fontSize: '13px', color: 'var(--text-secondary)', margin: 0, lineHeight: 1.5 }}>
-            Open to software engineering roles, full-stack internships, and technical collaborations.
+            Actively exploring modern architectures, distributed software, deep algorithms, and building real-world tools.
           </p>
 
           <div
