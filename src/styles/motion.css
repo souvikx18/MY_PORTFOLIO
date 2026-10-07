@@ -1,0 +1,58 @@
+/**
+ * Antigravity Motion & Interaction System
+ * GPU-friendly: transform & opacity only.
+ * Full compliance with prefers-reduced-motion (WCAG 2.2 AAA).
+ */
+
+/* Scroll Reveal Elements (controlled via IntersectionObserver) */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity var(--duration-slow) var(--ease-enter),
+              transform var(--duration-slow) var(--ease-enter);
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Restrained Hover Micro-interactions */
+.interactive-row {
+  transition: transform var(--duration-base) var(--ease-standard),
+              border-color var(--duration-base) var(--ease-standard),
+              background-color var(--duration-base) var(--ease-standard);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .interactive-row:hover {
+    transform: translateY(-2px);
+  }
+}
+
+/* Absolute Accessibility Mandate: prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .interactive-row:hover {
+    transform: none !important;
+  }
+
+  .btn-primary:hover,
+  .btn-secondary:hover {
+    transform: none !important;
+  }
+}

@@ -1,0 +1,91 @@
+/**
+ * Antigravity Master Engineering Operating Directive
+ * COLOR SYSTEM — MIDNIGHT TECH
+ * Dark Cinematic Technical Design Tokens
+ * 75% Dark Neutral Surfaces / 15% Cool Typography / 7% Blue-Cyan Accents / 3% Amber Highlights
+ */
+
+:root,
+:root[data-theme="dark"],
+:root[data-theme="light"] {
+  /* PRIMARY BACKGROUND (Near-Black / Deep Navy Layers) */
+  --bg-primary: #070A0F;
+  --bg-secondary: #0B1017;
+  --surface: #101722;
+  --surface-elevated: #151D28;
+  --surface-raised: #151D28;
+  --surface-hover: #192330;
+
+  /* TYPOGRAPHY (Cool Clean White & Technical Slate) */
+  --text-primary: #F5F7FA;     /* 18.7:1 contrast against #070A0F (WCAG AAA) */
+  --text-secondary: #B8C1CC;   /* 10.5:1 contrast against #070A0F (WCAG AAA) */
+  --text-muted: #7F8A98;       /* 5.4:1 contrast against #070A0F (WCAG AA) */
+  --text-dim: #5D6876;
+
+  /* BORDERS */
+  --border: #202A36;
+  --border-subtle: #171F29;
+  --border-active: #344255;
+
+  /* PRIMARY ACCENT (CTAs, Active Nav, Links, Selected States) */
+  --accent-blue: #5B8CFF;
+  --accent-blue-hover: #4a7cee;
+  --accent-blue-subtle: rgba(91, 140, 255, 0.12);
+
+  /* SECONDARY TECHNICAL ACCENT (Architecture, Connections, Flows) */
+  --accent-cyan: #36CFC9;
+  --accent-cyan-subtle: rgba(54, 207, 201, 0.12);
+
+  /* SECONDARY HIGHLIGHT (Metadata, Numbers, Special Markers) */
+  --accent-amber: #D6A85F;
+  --accent-amber-subtle: rgba(214, 168, 95, 0.12);
+
+  /* Architectural Backward Compatibility Aliases */
+  --accent-bronze: #D6A85F;
+  --accent-bronze-light: rgba(214, 168, 95, 0.12);
+  --accent-sage: #36CFC9;
+  --accent-earth: #5D6876;
+
+  /* Continuous Environment Tokens */
+  --env-grid-color: rgba(32, 42, 54, 0.45);
+  --env-ambient-hero: radial-gradient(ellipse 80% 50% at 50% -10%, rgba(91, 140, 255, 0.07), transparent 70%);
+  --env-ambient-work: radial-gradient(ellipse 70% 50% at 85% 30%, rgba(54, 207, 201, 0.05), transparent 70%);
+  --env-ambient-approach: radial-gradient(ellipse 65% 45% at 15% 55%, rgba(91, 140, 255, 0.05), transparent 70%);
+  --env-ambient-stack: radial-gradient(ellipse 75% 50% at 50% 75%, rgba(54, 207, 201, 0.04), transparent 70%);
+  --env-depth-shadow: 0 20px 48px -12px rgba(2, 4, 7, 0.75);
+  --env-card-border: #202A36;
+
+  /* Verified Project Status Tokens */
+  --status-hosted-border: #1B3835;
+  --status-hosted-bg: rgba(54, 207, 201, 0.08);
+  --status-hosted-text: #36CFC9;
+
+  --status-dev-border: #3A3522;
+  --status-dev-bg: rgba(214, 168, 95, 0.08);
+  --status-dev-text: #D6A85F;
+
+  --status-pending-border: #202A36;
+  --status-pending-bg: rgba(127, 138, 152, 0.08);
+  --status-pending-text: #B8C1CC;
+
+  /* Focus Indicator Ring */
+  --focus-ring: #5B8CFF;
+
+  /* Layout Dimensions */
+  --container-max: 1440px;
+  --header-height: 68px;
+
+  /* Border Radii (Disciplined, no exaggerated rounded cards) */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+
+  /* Animation & Transition Timings */
+  --ease-standard: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-enter: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-exit: cubic-bezier(0.7, 0, 0.84, 0);
+
+  --duration-fast: 160ms;
+  --duration-base: 280ms;
+  --duration-slow: 520ms;
+  --duration-enter: 700ms;
+}

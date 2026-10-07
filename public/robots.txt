@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://souvikkonar.dev/sitemap.xml
