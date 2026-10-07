@@ -11,19 +11,13 @@ export const TapRipple: React.FC = () => {
 
   useEffect(() => {
     let dropCount = 0;
+    let lastTime = 0;
 
-    const handlePointerDown = (e: MouseEvent | TouchEvent) => {
-      // Support touch or click
-      let clientX = 0;
-      let clientY = 0;
-
-      if ('touches' in e && e.touches.length > 0) {
-        clientX = e.touches[0]!.clientX;
-        clientY = e.touches[0]!.clientY;
-      } else if ('clientX' in e) {
-        clientX = e.clientX;
-        clientY = e.clientY;
-      }
+    const triggerDrop = (clientX: number, clientY: number) => {
+      const now = performance.now();
+      // Prevent duplicate triggers if pointerdown + touchstart + mousedown occur together
+      if (now - lastTime < 50) return;
+      lastTime = now;
 
       if (clientX === 0 && clientY === 0) return;
 
@@ -33,17 +27,38 @@ export const TapRipple: React.FC = () => {
         y: clientY
       };
 
-      setDrops((prev) => [...prev.slice(-10), newDrop]);
+      setDrops((prev) => [...prev.slice(-8), newDrop]);
 
-      // Remove after fluid animation completes (1000ms)
+      // Auto clean after 700ms
       setTimeout(() => {
         setDrops((prev) => prev.filter((d) => d.id !== newDrop.id));
-      }, 1050);
+      }, 700);
     };
 
-    window.addEventListener('pointerdown', handlePointerDown, { passive: true });
+    const handlePointerDown = (e: PointerEvent) => {
+      triggerDrop(e.clientX, e.clientY);
+    };
+
+    const handleTouchStart = (e: TouchEvent) => {
+      if (e.touches && e.touches.length > 0) {
+        triggerDrop(e.touches[0]!.clientX, e.touches[0]!.clientY);
+      }
+    };
+
+    const handleMouseDown = (e: MouseEvent) => {
+      triggerDrop(e.clientX, e.clientY);
+    };
+
+    // Use capturing phase ({ capture: true }) so taps on buttons, cards, links,
+    // and interactive content ALWAYS register and trigger the water drop animation!
+    window.addEventListener('pointerdown', handlePointerDown, { capture: true, passive: true });
+    window.addEventListener('touchstart', handleTouchStart, { capture: true, passive: true });
+    window.addEventListener('mousedown', handleMouseDown, { capture: true, passive: true });
+
     return () => {
-      window.removeEventListener('pointerdown', handlePointerDown);
+      window.removeEventListener('pointerdown', handlePointerDown, { capture: true });
+      window.removeEventListener('touchstart', handleTouchStart, { capture: true });
+      window.removeEventListener('mousedown', handleMouseDown, { capture: true });
     };
   }, []);
 
@@ -55,7 +70,7 @@ export const TapRipple: React.FC = () => {
         position: 'fixed',
         inset: 0,
         pointerEvents: 'none',
-        zIndex: 99998,
+        zIndex: 99999,
         overflow: 'hidden'
       }}
       aria-hidden="true"
@@ -74,12 +89,10 @@ export const TapRipple: React.FC = () => {
         >
           {/* Central droplet impact */}
           <span className="water-drop-center" />
-          {/* Primary wide outer ripple wave */}
-          <span className="water-wave water-wave--1" />
-          {/* Secondary middle ripple wave */}
-          <span className="water-wave water-wave--2" />
-          {/* Tertiary inner ripple wave */}
-          <span className="water-wave water-wave--3" />
+          {/* Primary medium ripple wave (max 125px) */}
+          <span className="water-wave water-wave--primary" />
+          {/* Secondary inner ripple wave (max 85px) */}
+          <span className="water-wave water-wave--secondary" />
         </div>
       ))}
       <style>{`
@@ -93,37 +106,33 @@ export const TapRipple: React.FC = () => {
           position: absolute;
           top: 0;
           left: 0;
-          width: 8px;
-          height: 8px;
+          width: 6px;
+          height: 6px;
           border-radius: 50%;
           background: #FFFFFF;
-          box-shadow: 0 0 12px 2px rgba(54, 207, 201, 0.9), 0 0 20px 6px rgba(91, 140, 255, 0.5);
+          box-shadow: 0 0 10px 2px rgba(54, 207, 201, 0.9);
           transform: translate(-50%, -50%);
-          animation: dropImpactAnim 400ms cubic-bezier(0.1, 0.9, 0.2, 1) forwards;
+          animation: dropImpactAnim 350ms cubic-bezier(0.1, 0.9, 0.2, 1) forwards;
         }
 
-        /* Fluid expanding concentric liquid ripple rings */
+        /* Medium fluid expanding liquid ripples */
         .water-wave {
           position: absolute;
           top: 0;
           left: 0;
           border-radius: 50%;
-          border: 1.5px solid rgba(54, 207, 201, 0.7);
-          background: radial-gradient(circle, rgba(54, 207, 201, 0.12) 0%, rgba(54, 207, 201, 0.03) 60%, transparent 80%);
+          border: 1.5px solid rgba(54, 207, 201, 0.75);
+          background: radial-gradient(circle, rgba(54, 207, 201, 0.12) 0%, rgba(54, 207, 201, 0.02) 65%, transparent 80%);
           transform: translate(-50%, -50%);
           box-sizing: border-box;
         }
 
-        .water-wave--1 {
-          animation: waveExpand1 950ms cubic-bezier(0.12, 0.75, 0.2, 1) forwards;
+        .water-wave--primary {
+          animation: waveExpandMedium1 650ms cubic-bezier(0.15, 0.8, 0.25, 1) forwards;
         }
 
-        .water-wave--2 {
-          animation: waveExpand2 950ms cubic-bezier(0.12, 0.75, 0.2, 1) 100ms forwards;
-        }
-
-        .water-wave--3 {
-          animation: waveExpand3 950ms cubic-bezier(0.12, 0.75, 0.2, 1) 220ms forwards;
+        .water-wave--secondary {
+          animation: waveExpandMedium2 650ms cubic-bezier(0.15, 0.8, 0.25, 1) 70ms forwards;
         }
 
         @keyframes dropImpactAnim {
@@ -132,72 +141,52 @@ export const TapRipple: React.FC = () => {
             opacity: 1;
           }
           50% {
-            transform: translate(-50%, -50%) scale(1.6);
-            opacity: 0.8;
+            transform: translate(-50%, -50%) scale(1.4);
+            opacity: 0.85;
           }
           100% {
-            transform: translate(-50%, -50%) scale(2.4);
+            transform: translate(-50%, -50%) scale(2);
             opacity: 0;
           }
         }
 
-        @keyframes waveExpand1 {
+        @keyframes waveExpandMedium1 {
           0% {
             width: 0px;
             height: 0px;
             opacity: 0.95;
-            border-width: 2px;
+            border-width: 1.8px;
           }
-          40% {
-            opacity: 0.7;
-            border-color: rgba(54, 207, 201, 0.6);
+          45% {
+            opacity: 0.75;
+            border-color: rgba(54, 207, 201, 0.65);
           }
           100% {
-            width: 260px;
-            height: 260px;
+            width: 125px;
+            height: 125px;
             opacity: 0;
             border-width: 0.8px;
             border-color: rgba(54, 207, 201, 0.1);
           }
         }
 
-        @keyframes waveExpand2 {
+        @keyframes waveExpandMedium2 {
           0% {
             width: 0px;
             height: 0px;
             opacity: 0.85;
-            border-width: 1.8px;
+            border-width: 1.5px;
           }
-          40% {
+          45% {
             opacity: 0.6;
             border-color: rgba(54, 207, 201, 0.5);
           }
           100% {
-            width: 200px;
-            height: 200px;
+            width: 85px;
+            height: 85px;
             opacity: 0;
             border-width: 0.8px;
             border-color: rgba(54, 207, 201, 0.05);
-          }
-        }
-
-        @keyframes waveExpand3 {
-          0% {
-            width: 0px;
-            height: 0px;
-            opacity: 0.75;
-            border-width: 1.5px;
-          }
-          40% {
-            opacity: 0.5;
-            border-color: rgba(54, 207, 201, 0.4);
-          }
-          100% {
-            width: 140px;
-            height: 140px;
-            opacity: 0;
-            border-width: 0.8px;
-            border-color: transparent;
           }
         }
       `}</style>

@@ -137,6 +137,7 @@ export const Header: React.FC<HeaderProps> = ({ theme, onToggleTheme }) => {
             ))}
           </nav>
 
+          {/* Day & Night Mode Switcher */}
           <button
             type="button"
             onClick={onToggleTheme}
@@ -145,11 +146,24 @@ export const Header: React.FC<HeaderProps> = ({ theme, onToggleTheme }) => {
               minHeight: '34px',
               padding: '0 12px',
               fontSize: 'var(--text-xs)',
-              letterSpacing: 'var(--tracking-wide)'
+              letterSpacing: 'var(--tracking-wide)',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px'
             }}
-            aria-label={`Switch theme mode`}
+            aria-label={`Switch to ${theme === 'light' ? 'Night' : 'Day'} mode`}
           >
-            {theme === 'light' ? 'MIDNIGHT TECH' : 'TECHNICAL LIGHT'}
+            {theme === 'light' ? (
+              <>
+                <span aria-hidden="true" style={{ fontSize: '12px' }}>🌙</span>
+                <span>NIGHT MODE</span>
+              </>
+            ) : (
+              <>
+                <span aria-hidden="true" style={{ fontSize: '12px' }}>☀️</span>
+                <span>DAY MODE</span>
+              </>
+            )}
           </button>
         </div>
 
@@ -169,11 +183,14 @@ export const Header: React.FC<HeaderProps> = ({ theme, onToggleTheme }) => {
             style={{
               minHeight: '34px',
               padding: '0 10px',
-              fontSize: 'var(--text-xs)'
+              fontSize: 'var(--text-xs)',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '4px'
             }}
-            aria-label="Switch theme mode"
+            aria-label={`Switch to ${theme === 'light' ? 'Night' : 'Day'} mode`}
           >
-            {theme === 'light' ? 'MIDNIGHT' : 'LIGHT'}
+            {theme === 'light' ? '🌙 NIGHT' : '☀️ DAY'}
           </button>
 
           <button

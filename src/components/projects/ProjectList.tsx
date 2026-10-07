@@ -1,16 +1,24 @@
 import React from 'react';
 import { Project } from '../../types/portfolio';
-import { ScrollProjectTransition, ProjectItem } from './ScrollProjectTransition';
+import { ProjectSelectorStrip } from './ProjectSelectorStrip';
+import { AllProjectsShowcase } from './AllProjectsShowcase';
+import { Container } from '../ui/Container';
+import { Section } from '../ui/Section';
 
 interface ProjectListProps {
   projects: readonly Project[];
 }
 
 export const ProjectList: React.FC<ProjectListProps> = ({ projects }) => {
-  const projectItems: ProjectItem[] = projects.map((p, idx) => ({
-    number: String(idx + 1).padStart(2, '0'),
-    title: p.name
-  }));
+  return (
+    <Section id="work" ariaLabel="Selected Work" className="section-ambient--work">
+      <Container>
+        {/* Minimal Scroll / Interactive Project Name Transition Strip (Takes medium space as shown in img 3) */}
+        <ProjectSelectorStrip projects={projects} />
 
-  return <ScrollProjectTransition projects={projectItems} />;
+        {/* Full Project Details, Architecture Breakdown & Live Evidence (Under the strip) */}
+        <AllProjectsShowcase projects={projects} />
+      </Container>
+    </Section>
+  );
 };

@@ -6,9 +6,8 @@
  */
 
 :root,
-:root[data-theme="dark"],
-:root[data-theme="light"] {
-  /* PRIMARY BACKGROUND (Near-Black / Deep Navy Layers) */
+:root[data-theme="dark"] {
+  /* NIGHT MODE (Deep Midnight Tech Environment) */
   --bg-primary: #070A0F;
   --bg-secondary: #0B1017;
   --surface: #101722;
@@ -16,7 +15,7 @@
   --surface-raised: #151D28;
   --surface-hover: #192330;
 
-  /* TYPOGRAPHY (Cool Clean White & Technical Slate) */
+  /* TYPOGRAPHY */
   --text-primary: #F5F7FA;     /* 18.7:1 contrast against #070A0F (WCAG AAA) */
   --text-secondary: #B8C1CC;   /* 10.5:1 contrast against #070A0F (WCAG AAA) */
   --text-muted: #7F8A98;       /* 5.4:1 contrast against #070A0F (WCAG AA) */
@@ -27,20 +26,16 @@
   --border-subtle: #171F29;
   --border-active: #344255;
 
-  /* PRIMARY ACCENT (CTAs, Active Nav, Links, Selected States) */
+  /* PRIMARY ACCENT */
   --accent-blue: #5B8CFF;
   --accent-blue-hover: #4a7cee;
   --accent-blue-subtle: rgba(91, 140, 255, 0.12);
 
-  /* SECONDARY TECHNICAL ACCENT (Architecture, Connections, Flows) */
+  /* SECONDARY TECHNICAL ACCENT */
   --accent-cyan: #36CFC9;
   --accent-cyan-subtle: rgba(54, 207, 201, 0.12);
-
-  /* UNIFIED CYAN SYSTEM (Replacing former golden/amber accent with clean Cyan) */
   --accent-amber: #36CFC9;
   --accent-amber-subtle: rgba(54, 207, 201, 0.12);
-
-  /* Architectural Backward Compatibility Aliases */
   --accent-bronze: #36CFC9;
   --accent-bronze-light: rgba(54, 207, 201, 0.12);
   --accent-sage: #36CFC9;
@@ -70,7 +65,70 @@
 
   /* Focus Indicator Ring */
   --focus-ring: #5B8CFF;
+}
 
+:root[data-theme="light"] {
+  /* DAY MODE (Crisp Architectural Light Mode) */
+  --bg-primary: #F8FAFC;
+  --bg-secondary: #EDF2F7;
+  --surface: #FFFFFF;
+  --surface-elevated: #F1F5F9;
+  --surface-raised: #FFFFFF;
+  --surface-hover: #E2E8F0;
+
+  /* TYPOGRAPHY */
+  --text-primary: #0F172A;
+  --text-secondary: #334155;
+  --text-muted: #64748B;
+  --text-dim: #94A3B8;
+
+  /* BORDERS */
+  --border: #CBD5E1;
+  --border-subtle: #E2E8F0;
+  --border-active: #94A3B8;
+
+  /* PRIMARY ACCENT */
+  --accent-blue: #2563EB;
+  --accent-blue-hover: #1D4ED8;
+  --accent-blue-subtle: rgba(37, 99, 235, 0.1);
+
+  /* SECONDARY TECHNICAL ACCENT */
+  --accent-cyan: #0D9488;
+  --accent-cyan-subtle: rgba(13, 148, 136, 0.1);
+  --accent-amber: #0D9488;
+  --accent-amber-subtle: rgba(13, 148, 136, 0.1);
+  --accent-bronze: #0D9488;
+  --accent-bronze-light: rgba(13, 148, 136, 0.1);
+  --accent-sage: #0D9488;
+  --accent-earth: #64748B;
+
+  /* Continuous Environment Tokens */
+  --env-grid-color: rgba(203, 213, 225, 0.5);
+  --env-ambient-hero: radial-gradient(ellipse 80% 50% at 50% -10%, rgba(37, 99, 235, 0.06), transparent 70%);
+  --env-ambient-work: radial-gradient(ellipse 70% 50% at 85% 30%, rgba(13, 148, 136, 0.05), transparent 70%);
+  --env-ambient-approach: radial-gradient(ellipse 65% 45% at 15% 55%, rgba(37, 99, 235, 0.05), transparent 70%);
+  --env-ambient-stack: radial-gradient(ellipse 75% 50% at 50% 75%, rgba(13, 148, 136, 0.04), transparent 70%);
+  --env-depth-shadow: 0 12px 32px -8px rgba(15, 23, 42, 0.08);
+  --env-card-border: #CBD5E1;
+
+  /* Verified Project Status Tokens (Cyan / Neutral) */
+  --status-hosted-border: #99F6E4;
+  --status-hosted-bg: rgba(13, 148, 136, 0.08);
+  --status-hosted-text: #0D9488;
+
+  --status-dev-border: #99F6E4;
+  --status-dev-bg: rgba(13, 148, 136, 0.08);
+  --status-dev-text: #0D9488;
+
+  --status-pending-border: #CBD5E1;
+  --status-pending-bg: rgba(100, 116, 139, 0.08);
+  --status-pending-text: #475569;
+
+  /* Focus Indicator Ring */
+  --focus-ring: #2563EB;
+}
+
+:root {
   /* Layout Dimensions */
   --container-max: 1440px;
   --header-height: 68px;
