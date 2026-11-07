@@ -2,43 +2,81 @@ import { EngineeringPrinciple } from '../types/portfolio';
 
 /**
  * Verified Engineering Philosophy for Souvik Konar.
- * Sourced from Master Specification Section 15:
- * "I don't start with the framework. I start with the constraint."
+ * Core Philosophy: "I care about what happens beyond the code"
  */
-export const engineeringApproachData: readonly EngineeringPrinciple[] = [
+export interface ApproachPrinciple {
+  readonly stepNumber: string;
+  readonly category: string;
+  readonly title: string;
+  readonly description: string;
+  readonly iconType: 'target' | 'layers' | 'shield' | 'chart';
+}
+
+export const approachPrinciples: readonly ApproachPrinciple[] = [
   {
     stepNumber: '01',
-    name: 'Understand',
-    coreQuestion: 'What actually needs solving?',
-    explanation: 
-      'Isolate the core operational problem before selecting tools. Avoid premature framework adoption and clarify real constraints, inputs, and failure thresholds.'
+    category: 'PROBLEM',
+    title: 'Understand before building',
+    description: 'Identify the real problem, user needs and constraints before choosing a solution.',
+    iconType: 'target'
   },
   {
     stepNumber: '02',
-    name: 'Model',
-    coreQuestion: 'What are the system boundaries?',
-    explanation: 
-      'Define data contracts, state machines, and interface boundaries. Establish where security risks, network failures, or data corruption can occur.'
+    category: 'ARCHITECTURE',
+    title: 'Design for clarity',
+    description: 'Choose simple, maintainable structures with clear responsibilities and data flow.',
+    iconType: 'layers'
   },
   {
     stepNumber: '03',
-    name: 'Build',
-    coreQuestion: 'What is the smallest reliable implementation?',
-    explanation: 
-      'Implement the minimal coherent system that completely satisfies the requirements. Favor native browser capabilities, strict typing, and defensive design over heavy dependencies.'
+    category: 'RELIABILITY',
+    title: 'Build for real conditions',
+    description: 'Consider validation, failure cases, security and performance—not just the happy path.',
+    iconType: 'shield'
   },
   {
     stepNumber: '04',
-    name: 'Test',
-    coreQuestion: 'Where does it fail?',
-    explanation: 
-      'Stress the implementation against real constraints: slow networks, throttled CPUs, malformed payloads, keyboard-only navigation, and unexpected user behaviors.'
+    category: 'IMPROVEMENT',
+    title: 'Measure and refine',
+    description: 'Test assumptions, learn from failures and improve based on evidence.',
+    iconType: 'chart'
+  }
+];
+
+export const approachMindset = {
+  eyebrow: 'ENGINEERING PRINCIPLES',
+  heading: 'I care about what happens beyond the code',
+  subtitle: 'HOW I APPROACH SOFTWARE ENGINEERING',
+  panelLabel: 'ENGINEERING MINDSET',
+  headline: 'Simple solutions.\nThoughtful decisions.',
+  body: "I don't choose technologies just because they are popular. I evaluate the problem, constraints, trade-offs and long-term maintainability before making technical decisions.",
+  priorityLabel: 'PRIORITY',
+  priorityValue: 'Clarity over complexity'
+} as const;
+
+export const engineeringApproachData: readonly EngineeringPrinciple[] = [
+  {
+    stepNumber: '01',
+    name: 'Problem',
+    coreQuestion: 'Understand before building',
+    explanation: 'Identify the real problem, user needs and constraints before choosing a solution.'
   },
   {
-    stepNumber: '05',
-    name: 'Iterate',
-    coreQuestion: 'What should change after observing reality?',
-    explanation: 
-      'Refactor based on empirical evidence, profiling metrics, and observed failure modes rather than subjective assumptions or aesthetic trends.'
+    stepNumber: '02',
+    name: 'Architecture',
+    coreQuestion: 'Design for clarity',
+    explanation: 'Choose simple, maintainable structures with clear responsibilities and data flow.'
+  },
+  {
+    stepNumber: '03',
+    name: 'Reliability',
+    coreQuestion: 'Build for real conditions',
+    explanation: 'Consider validation, failure cases, security and performance—not just the happy path.'
+  },
+  {
+    stepNumber: '04',
+    name: 'Improvement',
+    coreQuestion: 'Measure and refine',
+    explanation: 'Test assumptions, learn from failures and improve based on evidence.'
   }
 ];

@@ -11,6 +11,11 @@ export type ProjectCategory =
   | 'Interactive Engine'
   | 'Predictive ML';
 
+export interface ProblemFaced {
+  readonly title: string;
+  readonly description: string;
+}
+
 export interface Project {
   readonly id: string;
   readonly name: string;
@@ -25,6 +30,7 @@ export interface Project {
   readonly role: string;
   readonly architectureOverview: string;
   readonly engineeringFocus: readonly string[];
+  readonly problemsFaced?: readonly ProblemFaced[];
   readonly isPendingDetails?: boolean;
 }
 

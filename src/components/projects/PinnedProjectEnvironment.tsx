@@ -243,7 +243,7 @@ export const PinnedProjectEnvironment: React.FC<PinnedProjectEnvironmentProps> =
                   rel="noopener noreferrer"
                   style={{ minHeight: '38px', padding: '0 16px', fontSize: 'var(--text-xs)' }}
                 >
-                  Live Deployment &nearr;
+                  Live Deployment ↗
                 </Button>
               )}
 
@@ -254,7 +254,7 @@ export const PinnedProjectEnvironment: React.FC<PinnedProjectEnvironmentProps> =
                 rel="noopener noreferrer"
                 style={{ minHeight: '38px', padding: '0 16px', fontSize: 'var(--text-xs)' }}
               >
-                GitHub Repository &nearr;
+                GitHub Repository ↗
               </Button>
             </div>
           </article>

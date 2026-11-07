@@ -84,25 +84,25 @@ export const HireIQEvidence: React.FC = () => {
         {activeRole === 'recruiter' ? (
           <>
             <p style={{ margin: 0, color: 'var(--accent-cyan)' }}>
-              1. CRITERION INGESTION &rarr; Define custom technical evaluation rubrics.
+              1. CRITERION INGESTION → Define custom technical evaluation rubrics.
             </p>
             <p style={{ margin: '4px 0', color: 'var(--text-primary)' }}>
-              2. BATCH SCANNING &rarr; Parse resume PDFs against keyword & skill matrices.
+              2. BATCH SCANNING → Parse resume PDFs against keyword & skill matrices.
             </p>
             <p style={{ margin: 0, color: 'var(--status-hosted-text)' }}>
-              3. SHORTLIST PIPELINE &rarr; Filter qualified candidates with score metrics.
+              3. SHORTLIST PIPELINE → Filter qualified candidates with score metrics.
             </p>
           </>
         ) : (
           <>
             <p style={{ margin: 0, color: 'var(--accent-cyan)' }}>
-              1. DOCUMENT SUBMISSION &rarr; Upload PDF resume for automated parsing.
+              1. DOCUMENT SUBMISSION → Upload PDF resume for automated parsing.
             </p>
             <p style={{ margin: '4px 0', color: 'var(--text-primary)' }}>
-              2. BENCHMARK ANALYSIS &rarr; Identify missing skills relative to role requirements.
+              2. BENCHMARK ANALYSIS → Identify missing skills relative to role requirements.
             </p>
             <p style={{ margin: 0, color: 'var(--status-hosted-text)' }}>
-              3. FEEDBACK REPORT &rarr; Review structured improvement indicators.
+              3. FEEDBACK REPORT → Review structured improvement indicators.
             </p>
           </>
         )}

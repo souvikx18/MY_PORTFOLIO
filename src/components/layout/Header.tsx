@@ -4,11 +4,11 @@ import { profileData } from '../../data';
 import { Theme } from '../../hooks/useTheme';
 
 interface HeaderProps {
-  theme: Theme;
-  onToggleTheme: () => void;
+  theme?: Theme;
+  onToggleTheme?: () => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({ theme, onToggleTheme }) => {
+export const Header: React.FC<HeaderProps> = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -97,7 +97,7 @@ export const Header: React.FC<HeaderProps> = ({ theme, onToggleTheme }) => {
               letterSpacing: 'var(--tracking-tight)'
             }}
           >
-            {profileData.initials}
+            SOUVIK
           </span>
           <span style={{ color: 'var(--border)' }}>/</span>
           <span
@@ -136,35 +136,6 @@ export const Header: React.FC<HeaderProps> = ({ theme, onToggleTheme }) => {
               </a>
             ))}
           </nav>
-
-          {/* Day & Night Mode Switcher */}
-          <button
-            type="button"
-            onClick={onToggleTheme}
-            className="btn-secondary"
-            style={{
-              minHeight: '34px',
-              padding: '0 12px',
-              fontSize: 'var(--text-xs)',
-              letterSpacing: 'var(--tracking-wide)',
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '6px'
-            }}
-            aria-label={`Switch to ${theme === 'light' ? 'Night' : 'Day'} mode`}
-          >
-            {theme === 'light' ? (
-              <>
-                <span aria-hidden="true" style={{ fontSize: '12px' }}>🌙</span>
-                <span>NIGHT MODE</span>
-              </>
-            ) : (
-              <>
-                <span aria-hidden="true" style={{ fontSize: '12px' }}>☀️</span>
-                <span>DAY MODE</span>
-              </>
-            )}
-          </button>
         </div>
 
         {/* Mobile Controls */}
@@ -176,23 +147,6 @@ export const Header: React.FC<HeaderProps> = ({ theme, onToggleTheme }) => {
             gap: '12px'
           }}
         >
-          <button
-            type="button"
-            onClick={onToggleTheme}
-            className="btn-secondary"
-            style={{
-              minHeight: '34px',
-              padding: '0 10px',
-              fontSize: 'var(--text-xs)',
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '4px'
-            }}
-            aria-label={`Switch to ${theme === 'light' ? 'Night' : 'Day'} mode`}
-          >
-            {theme === 'light' ? '🌙 NIGHT' : '☀️ DAY'}
-          </button>
-
           <button
             type="button"
             onClick={() => setMobileMenuOpen(prev => !prev)}

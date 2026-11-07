@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Suspense } from 'react';
+import React, { useState, useEffect, useRef, Suspense } from 'react';
 import Lenis from 'lenis';
 import 'lenis/dist/lenis.css';
 import { useTheme } from './hooks/useTheme';
@@ -20,6 +20,7 @@ const LexisDialog = React.lazy(() =>
 export const App: React.FC = () => {
   const { theme, toggleTheme } = useTheme();
   const [isLexisOpen, setIsLexisOpen] = useState(false);
+  const lenisRef = useRef<Lenis | null>(null);
 
   // Initialize Lenis smooth momentum scrolling throughout full website
   useEffect(() => {
@@ -36,6 +37,7 @@ export const App: React.FC = () => {
       touchMultiplier: 1.2,
       infinite: false,
     });
+    lenisRef.current = lenis;
 
     let rafId: number;
     function raf(time: number) {
@@ -48,8 +50,19 @@ export const App: React.FC = () => {
     return () => {
       cancelAnimationFrame(rafId);
       lenis.destroy();
+      lenisRef.current = null;
     };
   }, []);
+
+  // Freeze Lenis scrolling when Lexis modal is open to ensure modal scroll isolation
+  useEffect(() => {
+    if (!lenisRef.current) return;
+    if (isLexisOpen) {
+      lenisRef.current.stop();
+    } else {
+      lenisRef.current.start();
+    }
+  }, [isLexisOpen]);
 
   return (
     <>

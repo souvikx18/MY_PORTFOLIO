@@ -83,6 +83,104 @@ body {
   display: none;
 }
 
+/* Sleek Cyber Scrollbar for Lexis & dialog scroll views */
+.cyber-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 216, 246, 0.45) transparent;
+  overscroll-behavior: contain;
+}
+
+.cyber-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.cyber-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.cyber-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(0, 216, 246, 0.35);
+  border-radius: 9999px;
+  border: 1px solid rgba(0, 216, 246, 0.1);
+}
+
+.cyber-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 216, 246, 0.7);
+  box-shadow: 0 0 10px rgba(0, 216, 246, 0.5);
+}
+
+/* =========================================================================
+   Lexis Thinking State Animations: Breathing Word & Sequential Dots
+   ========================================================================= */
+@keyframes thinkingBreathe {
+  0%, 100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes dotSequenceOne {
+  0%, 20% {
+    opacity: 0;
+  }
+  25%, 90% {
+    opacity: 1;
+  }
+  95%, 100% {
+    opacity: 0;
+  }
+}
+
+@keyframes dotSequenceTwo {
+  0%, 45% {
+    opacity: 0;
+  }
+  50%, 90% {
+    opacity: 1;
+  }
+  95%, 100% {
+    opacity: 0;
+  }
+}
+
+@keyframes dotSequenceThree {
+  0%, 70% {
+    opacity: 0;
+  }
+  75%, 90% {
+    opacity: 1;
+  }
+  95%, 100% {
+    opacity: 0;
+  }
+}
+
+.thinking-text {
+  animation: thinkingBreathe 1.8s ease-in-out infinite;
+  text-shadow: none !important;
+  filter: none !important;
+}
+
+.thinking-dot-1 {
+  display: inline-block;
+  animation: dotSequenceOne 1.5s infinite;
+  text-shadow: none !important;
+}
+
+.thinking-dot-2 {
+  display: inline-block;
+  animation: dotSequenceTwo 1.5s infinite;
+  text-shadow: none !important;
+}
+
+.thinking-dot-3 {
+  display: inline-block;
+  animation: dotSequenceThree 1.5s infinite;
+  text-shadow: none !important;
+}
+
 /* Containers */
 .container {
   width: min(100% - 40px, var(--container-max));
@@ -176,66 +274,83 @@ body {
   color: var(--status-pending-text);
 }
 
-/* Architectural Primary Button (Midnight Tech Primary Accent) */
+/* Architectural Primary Button (Midnight Tech Primary Accent - Cyber HUD Glass Pill) */
 .btn-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  min-height: 46px;
-  padding: 0 22px;
-  background-color: var(--accent-blue);
-  color: #FFFFFF;
+  min-height: 40px;
+  padding: 0 18px 0 14px;
+  background: linear-gradient(180deg, #1E86FF 0%, #0056DB 100%);
+  color: #F1F5F9;
   font-family: var(--font-mono);
-  font-size: var(--text-sm);
-  font-weight: 600;
-  letter-spacing: var(--tracking-wide);
+  font-size: 12px;
+  font-weight: 550;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   text-decoration: none;
-  border: 1px solid var(--accent-blue);
-  border-radius: var(--radius-sm);
+  text-shadow: none !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  border: 1px solid rgba(147, 197, 253, 0.55);
+  border-top: 1.5px solid rgba(255, 255, 255, 0.75);
+  border-radius: 10px;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.55),
+              inset 0 -1px 2px rgba(0, 0, 0, 0.35),
+              0 3px 10px rgba(0, 0, 0, 0.45);
   cursor: pointer;
   transition: transform var(--duration-fast) var(--ease-standard),
-              background-color var(--duration-fast) var(--ease-standard),
-              border-color var(--duration-fast) var(--ease-standard),
-              box-shadow var(--duration-fast) var(--ease-standard);
+              box-shadow var(--duration-fast) var(--ease-standard),
+              background var(--duration-fast) var(--ease-standard);
 }
 
 .btn-primary:hover {
-  transform: translateY(-1px);
-  background-color: var(--accent-blue-hover);
-  border-color: var(--accent-blue-hover);
-  box-shadow: 0 4px 20px rgba(91, 140, 255, 0.25);
+  transform: translateY(-2px);
+  background: linear-gradient(180deg, #2A8CFF 0%, #005CD6 100%);
+  box-shadow: inset 0 1px 1.5px rgba(255, 255, 255, 0.75),
+              0 5px 14px rgba(0, 0, 0, 0.55);
+  color: #FFFFFF;
 }
 
-/* Secondary Architectural Button */
+/* Secondary Architectural Button (Glassmorphic Midnight HUD Style) */
 .btn-secondary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  min-height: 46px;
-  padding: 0 22px;
-  background-color: var(--surface);
-  color: var(--text-primary);
+  min-height: 40px;
+  padding: 0 18px 0 14px;
+  background: rgba(10, 15, 29, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #F1F5F9;
   font-family: var(--font-mono);
-  font-size: var(--text-sm);
-  letter-spacing: var(--tracking-wide);
+  font-size: 12px;
+  font-weight: 550;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   text-decoration: none;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
+  text-shadow: none !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  border: 1px solid rgba(147, 197, 253, 0.35);
+  border-top: 1.5px solid rgba(255, 255, 255, 0.45);
+  border-radius: 10px;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.18),
+              0 3px 10px rgba(0, 0, 0, 0.45);
   cursor: pointer;
   transition: transform var(--duration-fast) var(--ease-standard),
               border-color var(--duration-fast) var(--ease-standard),
               background-color var(--duration-fast) var(--ease-standard),
+              box-shadow var(--duration-fast) var(--ease-standard),
               color var(--duration-fast) var(--ease-standard);
 }
 
 .btn-secondary:hover {
-  transform: translateY(-1px);
-  border-color: var(--border-active);
-  background-color: var(--surface-elevated);
+  transform: translateY(-2px);
+  background: rgba(18, 26, 48, 0.85);
+  border-color: rgba(147, 197, 253, 0.6);
+  box-shadow: inset 0 1px 1.5px rgba(255, 255, 255, 0.35),
+              0 5px 14px rgba(0, 0, 0, 0.55);
   color: #FFFFFF;
 }
 

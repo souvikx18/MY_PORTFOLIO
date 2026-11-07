@@ -63,7 +63,7 @@ export const ProjectRow: React.FC<ProjectRowProps> = ({ project, index }) => {
               aria-label={`View live deployment of ${project.name} (opens in new tab)`}
               style={{ minHeight: '38px', padding: '0 16px', fontSize: 'var(--text-xs)' }}
             >
-              Live Deployment &nearr;
+              Live Deployment ↗
             </Button>
           )}
 
@@ -75,7 +75,7 @@ export const ProjectRow: React.FC<ProjectRowProps> = ({ project, index }) => {
             aria-label={`View ${project.name} GitHub repository (opens in new tab)`}
             style={{ minHeight: '38px', padding: '0 16px', fontSize: 'var(--text-xs)' }}
           >
-            GitHub &nearr;
+            GitHub ↗
           </Button>
 
           <button

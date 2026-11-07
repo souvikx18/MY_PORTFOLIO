@@ -1,7 +1,6 @@
 import React from 'react';
 import { Container } from '../ui/Container';
 import { Section } from '../ui/Section';
-import { SectionLabel } from '../ui/SectionLabel';
 import { Button } from '../ui/Button';
 import { HeroCanvas } from './HeroCanvas';
 import { HeroDeveloperCard } from './HeroDeveloperCard';
@@ -33,7 +32,41 @@ export const Hero: React.FC = () => {
             marginBottom: '28px'
           }}
         >
-          <SectionLabel label={profileData.eyebrow} />
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px'
+            }}
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#38BDF8"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              style={{ flexShrink: 0 }}
+            >
+              <rect x="3" y="4" width="18" height="12" rx="2" fill="rgba(56, 189, 248, 0.08)" />
+              <path d="M1 20h22M8 20v-1a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v1" />
+              <path d="m8 8-2 2 2 2M16 8l2 2-2 2M13 7l-2 6" strokeWidth="1.6" />
+            </svg>
+            <span
+              className="font-mono"
+              style={{
+                fontSize: '11.5px',
+                color: '#38BDF8',
+                letterSpacing: '0.12em',
+                fontWeight: 600,
+                textTransform: 'uppercase'
+              }}
+            >
+              COMPUTER SCIENCE &amp; ENGINEERING
+            </span>
+          </div>
           
           <div
             className="font-mono"
@@ -104,11 +137,30 @@ export const Hero: React.FC = () => {
 
             {/* Primary & Secondary Actions */}
             <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap', alignItems: 'center', marginBottom: '16px' }}>
-              <Button href="#work" variant="primary">
-                View All 6 Projects &rarr;
+              <Button
+                href="#work"
+                variant="primary"
+                icon={
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                    <polygon points="12 2 2 7 12 12 22 7 12 2" />
+                    <polyline points="2 17 12 22 22 17" />
+                    <polyline points="2 12 12 17 22 12" />
+                  </svg>
+                }
+              >
+                VIEW ALL 6 PROJECTS →
               </Button>
-              <Button href="#contact" variant="secondary">
-                Get In Touch &rarr;
+              <Button
+                href="#contact"
+                variant="secondary"
+                icon={
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="2" y="5" width="20" height="14" rx="2" />
+                    <path d="M2 7l10 7 10-7" />
+                  </svg>
+                }
+              >
+                GET IN TOUCH →
               </Button>
             </div>
           </div>

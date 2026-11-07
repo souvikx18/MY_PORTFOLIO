@@ -8,42 +8,42 @@ import { SkillCategory } from '../types/portfolio';
 export const skillCategoriesData: readonly SkillCategory[] = [
   {
     title: 'LANGUAGES',
-    description: 'Core languages used for systems programming, web engineering, and algorithmic problem-solving.',
+    description: 'Languages used to develop applications, implement backend logic, work with databases and solve computational problems.',
     skills: ['Python', 'C', 'C++', 'JavaScript', 'TypeScript', 'SQL']
   },
   {
     title: 'FRONTEND',
-    description: 'User interface architecture, state management, and high-performance responsive web layouts.',
-    skills: ['React', 'HTML5', 'Modern CSS', 'Vite', 'Responsive Architecture', 'Accessible Web (WCAG)']
+    description: 'Building responsive, component-driven web interfaces with a focus on usability, accessibility, maintainability and performance.',
+    skills: ['React.js', 'HTML5', 'CSS3', 'JavaScript', 'Tailwind CSS', 'Vite']
   },
   {
     title: 'BACKEND & DATA',
-    description: 'Server architectures, relational data modeling, and secure API boundaries.',
-    skills: ['Node.js', 'FastAPI', 'MySQL', 'RESTful API Design', 'Schema Design', 'Data Validation']
+    description: 'Developing server-side applications, designing REST APIs, integrating relational databases and implementing reliable application logic.',
+    skills: ['Node.js', 'Express.js', 'FastAPI', 'Django', 'PostgreSQL', 'MySQL']
   },
   {
     title: 'SECURITY & SYSTEMS',
-    description: 'Defensive engineering and algorithmic problem-solving foundations.',
+    description: 'Applying security fundamentals, defensive programming practices and core computer science concepts to build more reliable software.',
     skills: [
-      'Cybersecurity Fundamentals (NASSCOM)',
-      'Secure Object-Oriented Design (CyberOOP)',
+      'Cybersecurity Fundamentals',
+      'Object-Oriented Programming',
       'Data Structures & Algorithms',
-      'Threat-Aware Software Practices'
+      'Application Security'
     ]
   },
   {
     title: 'AI & AUTOMATION',
-    description: 'Agentic workflows, evaluation harnesses, and machine learning pipelines.',
+    description: 'Developing AI-powered applications, experimenting with machine learning models, integrating LLM APIs and automating multi-step workflows.',
     skills: [
-      'AI Agent Evaluation',
-      'RAG Pipeline Grounding',
-      'LLM APIs & Prompt Engineering',
-      'Predictive Modeling (Hydrological / Environmental)'
+      'LLM API Integration',
+      'Prompt Engineering',
+      'Machine Learning',
+      'AI Agents & Workflow Automation'
     ]
   },
   {
     title: 'ENGINEERING WORKFLOWS',
-    description: 'Version control, system tooling, and testing disciplines.',
-    skills: ['Git', 'GitHub', 'Linux / Shell Basics', 'Automated Testing', 'Defensive Error Handling']
+    description: 'Managing software development workflows through version control, API testing, debugging, documentation and deployment practices.',
+    skills: ['Git', 'GitHub', 'Postman', 'Swagger / OpenAPI', 'VS Code', 'Deployment Workflows']
   }
 ];

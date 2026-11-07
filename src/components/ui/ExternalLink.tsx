@@ -25,7 +25,7 @@ export const ExternalLink: React.FC<ExternalLinkProps> = ({
       {...props}
     >
       <span>{children}</span>
-      {showArrow && <span aria-hidden="true" style={{ marginLeft: '4px' }}>&nearr;</span>}
+      {showArrow && <span aria-hidden="true" style={{ marginLeft: '4px' }}>↗</span>}
     </a>
   );
 };

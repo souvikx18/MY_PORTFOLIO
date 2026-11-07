@@ -87,73 +87,103 @@ export const lexisKnowledgeBase: readonly KnowledgeChunk[] = [
   },
   {
     id: 'project-decisionos',
-    title: 'DecisionOS — Data-Driven Decision Support Platform',
+    title: 'DecisionOS — AI-Powered Business Intelligence & Predictive Analytics Platform',
     category: 'project',
     projectId: 'decisionos',
     source: 'Selected Work → DecisionOS',
     sourceUrl: '#work',
     visibility: 'PUBLIC',
-    lastUpdated: '2026-10-07',
+    lastUpdated: '2026-11-07',
     priority: 10,
-    keywords: ['decisionos', 'decision', 'workflow', 'tradeoff', 'react', 'typescript', 'vercel', 'hosted', 'live', 'deployed'],
+    keywords: [
+      'decisionos',
+      'business intelligence',
+      'predictive analytics',
+      'react 19',
+      'node',
+      'express',
+      'postgresql',
+      'prisma',
+      'redis',
+      'bullmq',
+      'gemini ai',
+      'websockets',
+      'docker',
+      'hosted',
+      'vercel'
+    ],
     content: 
-      'DecisionOS is a data-driven decision-support platform designed to help users structure multi-factor trade-offs, weight dynamic criteria, and eliminate cognitive bias through a deterministic digital workflow. Built with React and TypeScript, it incorporates persistent client-side state engines and zero-layout-shift responsive layouts. Status: HOSTED live on Vercel at https://decision-os-tan.vercel.app/. Repository: https://github.com/souvikx18/DecisionOS.git.'
+      'DecisionOS integrates operational business data into a unified intelligence platform using AI-driven analytics, predictive algorithms, multi-tenant data management, and asynchronous processing. Problems solved include unstructured data integration (inconsistent CSV/Excel mapping), multi-tenant data isolation, scalable background processing (Redis & BullMQ workers), and real-time AI intelligence with Gemini AI. Tech stack: React 19, Node.js, Express.js, PostgreSQL, Prisma, Redis, BullMQ, Gemini AI, WebSockets, Docker. Status: HOSTED live on Vercel at https://decision-os-tan.vercel.app/. Repository: https://github.com/souvikx18/DecisionOS.git.'
   },
   {
     id: 'project-matex',
-    title: 'MATEX — Chess Engine & Web Application',
+    title: 'MateX — Interactive Chess Platform with AI & GSAP',
     category: 'project',
     projectId: 'matex',
-    source: 'Selected Work → MATEX',
+    source: 'Selected Work → MateX',
     sourceUrl: '#work',
     visibility: 'PUBLIC',
-    lastUpdated: '2026-10-07',
+    lastUpdated: '2026-11-07',
     priority: 10,
-    keywords: ['matex', 'chess', 'engine', 'board', 'game', 'react', 'javascript', 'netlify', 'hosted', 'live', 'play'],
+    keywords: ['matex', 'chess', 'chess.js', 'minimax', 'alpha-beta', 'gsap', 'lenis', 'react 19', 'javascript', 'netlify', 'hosted', 'live'],
     content: 
-      'MATEX is an interactive browser-based chess platform engineered in React and JavaScript. It implements real-time board state validation, turn alternation enforcement, move history tracking, and high-contrast rendering without external heavy game libraries. Status: HOSTED live on Netlify at https://matex-engine.netlify.app/. Repository: https://github.com/souvikx18/Chess-Website--using-REACT.git.'
+      'MateX is an interactive chess platform integrating chess.js game-state management, custom Minimax AI with Alpha-Beta pruning, and GSAP-powered interactive animations. Solves complex chess rule & move validation, AI move evaluation with positional scoring, interactive game-state synchronization, and responsive smooth animations via GSAP and Lenis. Tech stack: React 19, JavaScript, Vite, Chess.js, Minimax AI, Alpha-Beta Pruning, GSAP, Lenis, CSS3, Netlify. Status: HOSTED live on Netlify at https://matex-engine.netlify.app/. Repository: https://github.com/souvikx18/Chess-Website--using-REACT.git.'
+  },
+  {
+    id: 'project-veridyn',
+    title: 'Veridyn — RAG & Agent Evaluation Harness',
+    category: 'project',
+    projectId: 'veridyn',
+    source: 'Selected Work → Veridyn',
+    sourceUrl: '#work',
+    visibility: 'PUBLIC',
+    lastUpdated: '2026-11-07',
+    priority: 10,
+    keywords: ['veridyn', 'rag', 'eval', 'ai agents', 'fastapi', 'python', 'docker', 'benchmarking', 'regression', 'metrics'],
+    content: 
+      'Veridyn is a production reliability and continuous verification platform for AI agents. Integrates automated test execution, configurable evaluation metrics (correctness, faithfulness, relevance, hallucination detection), execution tracing, version tracking, and threshold-based deployment gates to detect regressions before production. Tech stack: Python 3.11+, FastAPI, PostgreSQL, SQLAlchemy, Alembic, Pydantic, JWT, HTTPX, Pytest, Next.js, React, TypeScript, Docker. Status: IN DEVELOPMENT. Repository: https://github.com/souvikx18/RAG-Agent-Eval-Harness.git.'
   },
   {
     id: 'project-flash-flood',
-    title: 'Flash Flood Prediction System',
+    title: 'Flash Flood Prediction System — Geospatial ML Platform',
     category: 'project',
     projectId: 'flash-flood-prediction',
     source: 'Selected Work → Flash Flood Prediction System',
     sourceUrl: '#work',
     visibility: 'PUBLIC',
-    lastUpdated: '2026-10-07',
+    lastUpdated: '2026-11-07',
     priority: 9,
-    keywords: ['flash flood', 'flood', 'prediction', 'hydrology', 'weather', 'environmental', 'ml', 'python', 'early warning', 'hazard'],
+    keywords: ['flash flood', 'flood', 'prediction', 'hydrology', 'geospatial', 'srtm', 'dem', 'ml', 'random forest', 'python', 'fastapi', 'rasterio'],
     content: 
-      'The Flash Flood Prediction System is an environmental data platform analyzing historical hydrological metrics, precipitation rates, and soil saturation to assess flash-flood vulnerability and support proactive disaster awareness. Built in Python. Status: NOT YET DEPLOYED (planned for production containerized deployment). Repository: https://github.com/souvikx18/flash-flood-prediction-system.'
+      'Geospatial intelligence platform combining satellite precipitation data, SRTM Digital Elevation Models (DEM), terrain feature extraction, and machine learning-based flood probability assessment through a secure FastAPI backend. Solves multi-source geospatial data integration, terrain feature engineering (slope, gradient), real-time precipitation processing (1h-24h temporal intervals via Open-Meteo), and Random Forest flood risk tier classification. Tech stack: Python, FastAPI, Scikit-learn, Random Forest, NumPy, Pandas, Rasterio, NetCDF, PostgreSQL, SQLAlchemy, Alembic, JWT, Open-Meteo. Status: NOT YET DEPLOYED. Repository: https://github.com/souvikx18/flash-flood-prediction-system.'
   },
   {
     id: 'project-hireiq',
-    title: 'HireIQ — Dual-Workflow Resume Scanning Platform',
+    title: 'HireIQ — AI Recruitment Intelligence & ATS Platform',
     category: 'project',
     projectId: 'hireiq',
     source: 'Selected Work → HireIQ',
     sourceUrl: '#work',
     visibility: 'PUBLIC',
-    lastUpdated: '2026-10-07',
+    lastUpdated: '2026-11-07',
     priority: 9,
-    keywords: ['hireiq', 'resume', 'scanner', 'hr', 'students', 'recruiter', 'document', 'workflow', 'panels'],
+    keywords: ['hireiq', 'resume', 'ats', 'recruitment', 'gemini ai', 'spacy', 'sentence transformers', 'faiss', 'prisma', 'docker'],
     content: 
-      'HireIQ is a specialized resume evaluation platform engineered with separated administrative workflows for HR recruiters and student applicants. It supports candidate criterion matching, document review pipelines, and clean role-based view isolation. Status: NOT YET DEPLOYED. Repository: https://github.com/souvikx18/HireIQ.git.'
+      'HireIQ is an AI-powered resume screening, candidate evaluation and skill-gap analysis platform. Features dual-sided workflows for recruiters and applicants, integrating React, Node.js, and Python AI microservices for automated multi-format resume parsing (PDF, DOCX, TXT), ATS compatibility scoring, FAISS semantic matching, and prioritized learning roadmaps. Tech stack: React 19, Node.js, Express.js, Python, FastAPI, Gemini AI, spaCy, Sentence Transformers, FAISS, PostgreSQL, SQLite, Prisma ORM, JWT, Docker, Nginx. Status: NOT YET DEPLOYED. Repository: https://github.com/souvikx18/HireIQ.git.'
   },
   {
     id: 'project-jarvis',
-    title: 'JARVIS — Personal Voice Assistant',
+    title: 'JARVIS — Personal Voice AI Assistant',
     category: 'project',
     projectId: 'jarvis',
     source: 'Selected Work → JARVIS',
     sourceUrl: '#work',
     visibility: 'PUBLIC',
-    lastUpdated: '2026-10-07',
+    lastUpdated: '2026-11-07',
     priority: 8,
-    keywords: ['jarvis', 'voice', 'assistant', 'python', 'speech', 'automation', 'desktop', 'commands'],
+    keywords: ['jarvis', 'voice', 'assistant', 'gemini', 'elevenlabs', 'next.js', 'vercel ai sdk', 'web speech api', 'hud', 'speech synthesis'],
     content: 
-      'JARVIS is a localized desktop voice assistant system developed in Python for audio input capture, natural speech recognition, and automated daily workflow execution. Status: IN DEVELOPMENT (additional architectural details pending completion). Repository: https://github.com/souvikx18/JARVIS.git.'
+      'JARVIS is a hands-free conversational AI assistant with live web intelligence and natural voice interaction. Integrates Google Gemini model orchestration with cascading failovers, intent-based Google News and web search retrieval via SearchApi.io, browser speech recognition, ElevenLabs voice synthesis with native speech fallback, and an interactive real-time system HUD using Next.js and TypeScript. Tech stack: Next.js 16, React 19, TypeScript, Google Gemini, Vercel AI SDK, ElevenLabs, SearchApi.io, Web Speech API, SpeechSynthesis, Tailwind CSS 4, REST API. Status: IN DEVELOPMENT. Repository: https://github.com/souvikx18/JARVIS.git.'
   },
   {
     id: 'projects-summary',
@@ -177,9 +207,9 @@ export const lexisKnowledgeBase: readonly KnowledgeChunk[] = [
     visibility: 'PUBLIC',
     lastUpdated: '2026-10-07',
     priority: 9,
-    keywords: ['skills', 'languages', 'frontend', 'python', 'c', 'c++', 'javascript', 'typescript', 'sql', 'react', 'html', 'css', 'vite', 'tech stack'],
+    keywords: ['skills', 'languages', 'frontend', 'python', 'c', 'c++', 'javascript', 'typescript', 'sql', 'react', 'html', 'css', 'tailwind', 'vite', 'tech stack'],
     content: 
-      'Languages: Python, C, C++, JavaScript (ES6+), TypeScript, and SQL. Frontend technologies: React, Vite, Modern CSS, HTML5, responsive layout architecture, component state design, and WCAG 2.2 AAA accessibility standards. Souvik emphasizes native web capabilities and minimal bundle overhead.'
+      'Languages: Python, C, C++, JavaScript, TypeScript, and SQL. Frontend technologies: React.js, HTML5, CSS3, JavaScript, Tailwind CSS, and Vite. Souvik builds responsive, component-driven web interfaces with a focus on usability, accessibility, maintainability, and performance.'
   },
   {
     id: 'skills-backend-systems',
@@ -203,9 +233,9 @@ export const lexisKnowledgeBase: readonly KnowledgeChunk[] = [
     visibility: 'PUBLIC',
     lastUpdated: '2026-10-07',
     priority: 9,
-    keywords: ['philosophy', 'approach', 'how', 'methodology', 'understand', 'model', 'build', 'test', 'iterate', 'principles', 'mindset'],
+    keywords: ['philosophy', 'approach', 'how', 'methodology', 'problem', 'architecture', 'reliability', 'improvement', 'principles', 'mindset', 'clarity over complexity'],
     content: 
-      'Souvik operates under the governing principle: "I don\'t start with the framework. I start with the constraint." His 5-step engineering methodology:\n1. Understand: Pinpoint the core operational problem.\n2. Model: Define system boundaries, state flows, and failure points.\n3. Build: Ship the smallest reliable implementation using native capabilities.\n4. Test: Subject the code to edge cases, network throttling, and invalid inputs.\n5. Iterate: Refactor based on measurable evidence and observed behavior.'
+      'Souvik operates under the core philosophy: "I care about what happens beyond the code." His 4-pillar engineering methodology:\n1. 01 / PROBLEM: Understand before building — Identify the real problem, user needs, and constraints before choosing a solution.\n2. 02 / ARCHITECTURE: Design for clarity — Choose simple, maintainable structures with clear responsibilities and data flow.\n3. 03 / RELIABILITY: Build for real conditions — Consider validation, failure cases, security, and performance—not just the happy path.\n4. 04 / IMPROVEMENT: Measure and refine — Test assumptions, learn from failures, and improve based on evidence.\n\nEngineering Mindset: "Simple solutions. Thoughtful decisions. I don\'t choose technologies just because they are popular. I evaluate the problem, constraints, trade-offs and long-term maintainability before making technical decisions." Priority: Clarity over complexity.'
   },
   {
     id: 'contact-channels',

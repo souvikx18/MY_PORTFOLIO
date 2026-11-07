@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Project } from '../../types/portfolio';
 
 interface ProjectSelectorStripProps {
@@ -9,341 +9,173 @@ interface ProjectSelectorStripProps {
 
 export const ProjectSelectorStrip: React.FC<ProjectSelectorStripProps> = ({
   projects,
-  activeId,
   onSelectProject
 }) => {
-  const [internalIndex, setInternalIndex] = useState(0);
-
-  // Sync with activeId prop if provided
-  const activeIndex = activeId
-    ? Math.max(0, projects.findIndex(p => p.id === activeId))
-    : internalIndex;
-
   const total = projects.length;
   if (total === 0) return null;
 
-  const prevIndex = (activeIndex - 1 + total) % total;
-  const nextIndex = (activeIndex + 1) % total;
+  // Quadruple the project list so the continuous marquee repeats seamlessly on all screens
+  const marqueeItems = [...projects, ...projects, ...projects, ...projects];
 
-  const currentProject = projects[activeIndex]!;
-  const prevProject = projects[prevIndex]!;
-  const nextProject = projects[nextIndex]!;
-
-  const handleSelect = (idx: number) => {
-    setInternalIndex(idx);
-    const target = projects[idx];
-    if (target) {
-      if (onSelectProject) {
-        onSelectProject(target.id);
-      } else {
-        // Smoothly scroll to the full project card below
-        const el = document.getElementById(`project-${target.id}`);
-        if (el) {
-          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }
+  const handleProjectClick = (projectId: string) => {
+    if (onSelectProject) {
+      onSelectProject(projectId);
+    }
+    const el = document.getElementById(`project-${projectId}`);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
 
   return (
     <div
-      className="editorial-card"
       style={{
         width: '100%',
-        minHeight: '230px',
-        maxHeight: '260px',
-        padding: '20px clamp(16px, 4vw, 40px)',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        position: 'relative',
-        background: 'linear-gradient(180deg, var(--surface-raised) 0%, var(--surface) 100%)',
-        border: '1px solid var(--border)',
-        borderRadius: 'var(--radius-sm)',
-        boxShadow: 'var(--env-depth-shadow)',
-        marginBottom: '40px',
+        marginBottom: '56px',
         overflow: 'hidden'
       }}
+      aria-label="Continuous Reel of Selected Works"
     >
-      {/* Top Header Bar with Architectural Line (Matching Reference Img 3) */}
+      {/* Minimal Header Line */}
       <div
         style={{
           display: 'flex',
-          justifyContent: 'space-between',
+          justifyContent: 'flex-start',
           alignItems: 'center',
+          gap: '8px',
           paddingBottom: '12px',
-          borderBottom: '1px solid var(--border-subtle)'
+          borderBottom: '1px solid var(--border-subtle)',
+          marginBottom: '24px'
         }}
       >
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#38BDF8"
+          strokeWidth="2.2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          style={{ flexShrink: 0 }}
+        >
+          <polygon points="12 2 2 7 12 12 22 7 12 2" />
+          <polyline points="2 12 12 17 22 12" />
+          <polyline points="2 17 12 22 22 17" />
+        </svg>
         <span
           className="font-mono"
           style={{
-            fontSize: '11px',
-            color: 'var(--accent-cyan)',
-            letterSpacing: '0.1em',
-            fontWeight: 600,
+            fontSize: '13px',
+            color: '#38BDF8',
+            letterSpacing: '0.12em',
+            fontWeight: 700,
             textTransform: 'uppercase'
           }}
         >
-          02 &mdash; SELECTED WORK
-        </span>
-
-        <span
-          className="font-mono"
-          style={{
-            fontSize: '11px',
-            color: 'var(--text-muted)'
-          }}
-        >
-          PROJECT {String(activeIndex + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
+          PROJECTS
         </span>
       </div>
 
-      {/* Center Interactive Minimal Strip (Left / Center / Right) */}
+      {/* Borderless, Continuous Horizontal Ticker (Casko Luxury Typography & Generous Gap) */}
       <div
         style={{
           position: 'relative',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          height: '130px',
-          overflow: 'hidden'
+          width: '100%',
+          overflow: 'hidden',
+          paddingBlock: '16px',
+          maskImage: 'linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%)',
+          WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%)'
         }}
       >
-        {/* Left Previous Project */}
-        <button
-          type="button"
-          onClick={() => handleSelect(prevIndex)}
-          className="strip-side-project"
-          style={{
-            position: 'absolute',
-            left: 'clamp(8px, 4vw, 48px)',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            gap: '2px',
-            background: 'none',
-            border: 'none',
-            cursor: 'pointer',
-            padding: '8px',
-            maxWidth: 'clamp(110px, 22vw, 200px)',
-            opacity: 0.35,
-            transition: 'opacity 250ms ease, transform 250ms ease'
-          }}
-          aria-label={`Previous project: ${prevProject.name}`}
-        >
-          <span
-            className="font-mono"
-            style={{
-              fontSize: '10px',
-              color: 'var(--text-dim)',
-              letterSpacing: '0.08em'
-            }}
-          >
-            {String(prevIndex + 1).padStart(2, '0')}
-          </span>
-          <span
-            style={{
-              width: '1px',
-              height: '8px',
-              backgroundColor: 'var(--border)'
-            }}
-          />
-          <span
-            style={{
-              fontSize: 'clamp(1rem, 2.2vw, 1.4rem)',
-              color: 'var(--text-muted)',
-              fontWeight: 500,
-              whiteSpace: 'nowrap',
-              overflow: 'hidden',
-              textOverflow: 'ellipsis'
-            }}
-          >
-            {prevProject.name}
-          </span>
-        </button>
-
-        {/* Center Active Project (Prominent, High-Contrast, Vertical Cyan Ticks) */}
-        <div
-          onClick={() => handleSelect(activeIndex)}
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            gap: '4px',
-            cursor: 'pointer',
-            zIndex: 2,
-            maxWidth: 'clamp(260px, 48vw, 480px)',
-            textAlign: 'center'
-          }}
-          role="button"
-          tabIndex={0}
-          aria-label={`Active project: ${currentProject.name}. Click to view details below.`}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              handleSelect(activeIndex);
-            }
-          }}
-        >
-          {/* Top Number & Cyan Guide Tick (Reference 3rd img) */}
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '3px' }}>
-            <span
-              className="font-mono"
-              style={{
-                fontSize: '12px',
-                color: 'var(--accent-cyan)',
-                fontWeight: 700,
-                letterSpacing: '0.08em'
-              }}
-            >
-              {String(activeIndex + 1).padStart(2, '0')}
-            </span>
-            <span
-              style={{
-                width: '1px',
-                height: '12px',
-                backgroundColor: 'var(--accent-cyan)'
-              }}
-            />
-          </div>
-
-          {/* Active Title */}
-          <h3
-            style={{
-              fontSize: 'clamp(1.75rem, 4vw, 3rem)',
-              fontWeight: 700,
-              color: 'var(--text-primary)',
-              margin: 0,
-              lineHeight: 1.15,
-              letterSpacing: '-0.03em'
-            }}
-          >
-            {currentProject.name}
-          </h3>
-
-          {/* Bottom Cyan Guide Tick */}
-          <span
-            style={{
-              width: '1px',
-              height: '10px',
-              backgroundColor: 'var(--accent-cyan)',
-              marginTop: '2px'
-            }}
-          />
-        </div>
-
-        {/* Right Next Project */}
-        <button
-          type="button"
-          onClick={() => handleSelect(nextIndex)}
-          className="strip-side-project"
-          style={{
-            position: 'absolute',
-            right: 'clamp(8px, 4vw, 48px)',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            gap: '2px',
-            background: 'none',
-            border: 'none',
-            cursor: 'pointer',
-            padding: '8px',
-            maxWidth: 'clamp(110px, 22vw, 200px)',
-            opacity: 0.35,
-            transition: 'opacity 250ms ease, transform 250ms ease'
-          }}
-          aria-label={`Next project: ${nextProject.name}`}
-        >
-          <span
-            className="font-mono"
-            style={{
-              fontSize: '10px',
-              color: 'var(--text-dim)',
-              letterSpacing: '0.08em'
-            }}
-          >
-            {String(nextIndex + 1).padStart(2, '0')}
-          </span>
-          <span
-            style={{
-              width: '1px',
-              height: '8px',
-              backgroundColor: 'var(--border)'
-            }}
-          />
-          <span
-            style={{
-              fontSize: 'clamp(1rem, 2.2vw, 1.4rem)',
-              color: 'var(--text-muted)',
-              fontWeight: 500,
-              whiteSpace: 'nowrap',
-              overflow: 'hidden',
-              textOverflow: 'ellipsis'
-            }}
-          >
-            {nextProject.name}
-          </span>
-        </button>
-      </div>
-
-      {/* Bottom Navigation Indicators & Jump to Details Hint */}
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          paddingTop: '8px',
-          borderTop: '1px solid var(--border-subtle)'
-        }}
-      >
-        <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
-          {projects.map((p, idx) => {
-            const isActive = idx === activeIndex;
-            return (
+        <div className="continuous-projects-track">
+          {marqueeItems.map((proj, idx) => (
+            <React.Fragment key={`${proj.id}-${idx}`}>
               <button
-                key={p.id}
                 type="button"
-                onClick={() => handleSelect(idx)}
-                aria-label={`Jump to project ${p.name}`}
+                onClick={() => handleProjectClick(proj.id)}
+                className="reel-project-item"
+                aria-label={`Project: ${proj.name}. Click to view details below.`}
                 style={{
-                  width: isActive ? '18px' : '6px',
-                  height: '3px',
-                  borderRadius: '2px',
-                  backgroundColor: isActive ? 'var(--accent-cyan)' : 'var(--border)',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  background: 'transparent',
                   border: 'none',
-                  padding: 0,
+                  padding: '6px 12px',
+                  color: 'inherit',
                   cursor: 'pointer',
-                  transition: 'all 200ms ease'
+                  whiteSpace: 'nowrap',
+                  flexShrink: 0,
+                  transition: 'all 240ms ease',
+                  textDecoration: 'none'
                 }}
-              />
-            );
-          })}
-        </div>
+              >
+                {/* Project Title Styled with Casko Luxury Serif Typography */}
+                <span
+                  className="project-name-luxury"
+                  style={{
+                    fontFamily: 'var(--font-luxury), "Casko Luxury", "Casko", "Playfair Display", "Cormorant Garamond", Didot, "Bodoni MT", serif',
+                    fontSize: 'clamp(22px, 2.6vw, 30px)',
+                    fontWeight: 500,
+                    color: 'var(--text-primary)',
+                    letterSpacing: '0.03em',
+                    lineHeight: 1.2,
+                    transition: 'color 220ms ease, text-shadow 220ms ease, transform 220ms ease'
+                  }}
+                >
+                  {proj.name}
+                </span>
+              </button>
 
-        <button
-          type="button"
-          onClick={() => handleSelect(activeIndex)}
-          className="font-mono"
-          style={{
-            fontSize: '10px',
-            color: 'var(--text-muted)',
-            backgroundColor: 'transparent',
-            border: 'none',
-            cursor: 'pointer',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '4px'
-          }}
-        >
-          <span>VIEW FULL DETAILS</span>
-          <span style={{ color: 'var(--accent-cyan)' }}>&darr;</span>
-        </button>
+              {/* Elegant Separator Diamond with Generous Spacing */}
+              <span
+                style={{
+                  color: 'var(--accent-cyan)',
+                  fontSize: '11px',
+                  opacity: 0.6,
+                  alignSelf: 'center',
+                  flexShrink: 0
+                }}
+                aria-hidden="true"
+              >
+                ✦
+              </span>
+            </React.Fragment>
+          ))}
+        </div>
       </div>
 
+      {/* Infinite Continuous Scrolling Animation with Expanded Gap and Smooth Timing */}
       <style>{`
-        .strip-side-project:hover {
-          opacity: 0.8 !important;
-          transform: scale(1.05);
+        .continuous-projects-track {
+          display: flex;
+          align-items: center;
+          gap: clamp(48px, 6vw, 76px);
+          width: max-content;
+          will-change: transform;
+          animation: seamlessContinuousScroll 40s linear infinite;
+        }
+
+        @keyframes seamlessContinuousScroll {
+          0% {
+            transform: translate3d(0, 0, 0);
+          }
+          100% {
+            transform: translate3d(-50%, 0, 0);
+          }
+        }
+
+        .reel-project-item:hover .project-name-luxury {
+          color: var(--accent-cyan) !important;
+          text-shadow: 0 0 20px rgba(54, 207, 201, 0.45);
+          transform: translateY(-2px);
+        }
+
+        @media (max-width: 640px) {
+          .continuous-projects-track {
+            animation-duration: 28s;
+            gap: 36px;
+          }
         }
       `}</style>
     </div>
